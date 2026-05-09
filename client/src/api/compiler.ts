@@ -1,6 +1,8 @@
 import type { CompileResult } from "../types/compiler";
 
-const API_BASE = "/api";
+const API_BASE = window.location.hostname === "localhost" 
+  ? "/api" 
+  : "https://mini-compiler-backend.onrender.com/api";
 
 export async function compileCode(code: string): Promise<CompileResult> {
   const response = await fetch(`${API_BASE}/compile`, {
